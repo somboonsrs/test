@@ -25,10 +25,10 @@ public class ProvinceService {
 	private ProvinceRepository provinceRepository;
 	
 	@Cacheable(value="provinceCache",key="#id")
-	public Optional<Province> getProvinceList(String id) throws InterruptedException {
+	public List<Province> getAllProvince(String id){
 		System.out.println(".................. get  province id : "+id);
-		TimeUnit.SECONDS.sleep(10);
-		return provinceRepository.findById(id);
+		//TimeUnit.SECONDS.sleep(10);
+		return provinceRepository.findByDropdownId(id);
 	}
 
 			

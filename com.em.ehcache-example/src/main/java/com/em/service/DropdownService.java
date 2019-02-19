@@ -23,13 +23,6 @@ public class DropdownService {
 	@Autowired
 	private DropdownRepository dropdownRepository;
 	
-	@Cacheable(value="provinceCache",key="#id")
-	public List<Province> getProvince(String id) throws InterruptedException {
-		System.out.println(".................. get  province id : "+id);
-		TimeUnit.SECONDS.sleep(10);
-		return dropdownRepository.findProvinceByDropdownId(id);
-	}
-	
 	@Cacheable(value="dropdownCache",key="#id")
 	public Optional<Dropdown> getDropdown(String id) throws InterruptedException {
 		System.out.println(".................. get  dropdown id : "+id);

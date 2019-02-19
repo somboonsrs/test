@@ -19,7 +19,7 @@
     
         <cache name="provinceCache"
            maxEntriesLocalHeap="1000"
-           maxEntriesLocalDisk="10000"
+           maxEntriesLocalDisk="200000"
            eternal="false"
            diskSpoolBufferSizeMB="20"
            timeToIdleSeconds="300" timeToLiveSeconds="600"

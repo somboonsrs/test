@@ -32,13 +32,9 @@ public class DropdownController {
 		return dropdownService.getDropdown(id);
 		}
 		
-		@RequestMapping(value="/provinceList/{id}")
-		public Optional<Province> getProvinceList(@PathVariable final String id) throws InterruptedException{
-		return provinceService.getProvinceList(id);
+		@RequestMapping(value="/dropdowns/province/{id}")
+		public List<Province> getProvinceList(@PathVariable String id){
+		return provinceService.getAllProvince(id);
 		}
 		
-		@RequestMapping(value="/provinces/{id}")
-		public List<Province> getProvince(@PathVariable final String id) throws InterruptedException{
-		return dropdownService.getProvince(id);
-	}
 }
