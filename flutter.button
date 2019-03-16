@@ -1,0 +1,139 @@
+import 'package:flutter/material.dart';
+
+void main() {
+
+  runApp(new MaterialApp(
+    home: new MyApp(),
+  ));
+}
+
+class MyApp extends StatefulWidget {
+  @override
+  _State createState() => _State();
+}
+
+class _State extends State<MyApp> {
+
+  String _value = 'What is your name ?';
+  int _newValue = 0;
+  int _calA = 0;
+  int _calB = 0;
+  int _result = 0;
+  TextEditingController nameController = new TextEditingController();
+
+  void _onPressed() {
+    setState(() {
+      //_value= new DateTime.now().toString();
+      _value = '';
+    });
+  }
+
+  void _add() {
+    setState(() {
+      _newValue++;
+    });
+  }
+
+  void _subtract() {
+    setState(() {
+      _newValue--;
+    });
+  }
+
+  void _reset1() {
+    setState(() {
+      _newValue = 0;
+    });
+  }
+
+  void _reset2() {
+    setState(() {
+      _value = new _State()._value;
+    });
+  }
+
+  void _reset3() {
+    setState(() {
+      _result = 0;
+    });
+  }
+
+  void _send() {
+    setState(() {
+      _value = nameController.text;
+    });
+  }
+
+  void _addCalA() {
+    setState(() {
+      _calA++;
+    });
+  }
+
+  void _subtractCalA() {
+    setState(() {
+      _calA--;
+    });
+  }
+
+  void _addCalB() {
+    setState(() {
+      _calB++;
+    });
+  }
+
+  void _subtractCalB() {
+    setState(() {
+      _calB--;
+    });
+  }
+
+  void _sum() {
+    setState(() {
+      _result = _calA + _calB;
+    });
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    // TODO: implement build
+    return new Scaffold(
+      appBar: new AppBar(
+        title: new Text('# em.app #'),
+      ),
+      body: new Container(
+        alignment: Alignment.topRight,
+        padding: new EdgeInsets.all(32.0),
+        child: new Center(
+          child: new ListView(
+            children: <Widget>[
+              new Text('Value = ${_newValue}',textAlign: TextAlign.center),
+              new IconButton(icon: new Icon(Icons.add), onPressed: _add),
+              new IconButton(
+                  icon: new Icon(Icons.remove), onPressed: _subtract),
+              new IconButton(icon: new Icon(Icons.delete), onPressed: _reset1),
+              new Text(_value,textAlign: TextAlign.center),
+              TextFormField(
+                controller: nameController,
+                decoration: InputDecoration(
+                    labelText: 'Enter your username'
+                ),
+              ),
+              new RaisedButton(onPressed: _send, child: new Text('Send')),
+              new IconButton(icon: new Icon(Icons.delete), onPressed: _reset2),
+              new Text('A = ${_calA}',textAlign: TextAlign.center),
+              new IconButton(icon: new Icon(Icons.add), onPressed: _addCalA),
+              new IconButton(icon: new Icon(Icons.remove), onPressed: _subtractCalA),
+              new Text('B = ${_calB}',textAlign: TextAlign.center),
+              new IconButton(icon: new Icon(Icons.add), onPressed: _addCalB),
+              new IconButton(icon: new Icon(Icons.remove), onPressed: _subtractCalB),
+              new Text(_result.toString(),textAlign: TextAlign.center),
+              new RaisedButton(onPressed: _sum, child: new Text('click sum(A,B)')),
+              new IconButton(icon: new Icon(Icons.delete), onPressed: _reset3)
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+}
